@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synth Settings</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .settings-container {
+            max-width: 500px;
+            margin: 60px auto;
+            background: #181818;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+            padding: 32px 24px;
+            color: #f5f5f5;
+        }
+        .settings-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 24px;
+            color: var(--theme-color, #4ecdc4);
+            text-align: center;
+        }
+        .theme-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            justify-content: center;
+            margin-top: 12px; /* Adds spacing between label and buttons */
+            margin-bottom: 18px;
+        }
+
+
+
+        .color-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            cursor: pointer;
+            outline: none;
+            transition: border 0.2s, transform 0.2s;
+        }
+        .color-btn.selected, .color-btn:focus {
+            border: 3px solid var(--theme-color, #4ecdc4);
+            transform: scale(1.1);
+        }
+        .save-msg {
+            text-align: center;
+            color: #4ecdc4;
+            margin-top: 16px;
+            font-size: 1.1rem;
+            display: none;
+        }
+        @media (max-width: 600px) {
+            .settings-container {
+                margin: 32px 16px; /* Adds margin from screen sides */
+                padding: 24px 16px; /* Reduces padding slightly for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-logo">Synth</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+    <div class="settings-container">
+        <div class="settings-title">Settings</div>
+        <div>
+            <label style="font-size:1.1rem;">Theme Color:</label>
+            <div class="theme-options">
+                <button class="color-btn" style="background:#4ecdc4;" data-color="#4ecdc4" title="Default"></button>
+                <button class="color-btn" style="background:#ff6b6b;" data-color="#ff6b6b" title="Red"></button>
+                <button class="color-btn" style="background:#ffd166;" data-color="#ffd166" title="Yellow"></button>
+                <button class="color-btn" style="background:#6c5ce7;" data-color="#6c5ce7" title="Purple"></button>
+                <button class="color-btn" style="background:#01f50d;" data-color="#01f50d" title="Green"></button>
+                <button class="color-btn" style="background:#00bcd4;" data-color="#00bcd4" title="Cyan"></button>
+                <button class="color-btn" style="background:#3a52bb;" data-color="#3a52bb" title="Persian Blue"></button>
+                <button class="color-btn" style="background:#2980b9;" data-color="#2980b9" title="Blue"></button>
+                <button class="color-btn" style="background:#e67e22;" data-color="#e67e22" title="Orange"></button>
+                <button class="color-btn" style="background:#b931e2;" data-color="##b931e2" title="Pink"></button>
+                <button class="color-btn" style="background:#9b59b6;" data-color="#9b59b6" title="Amethyst"></button>
+                <button class="color-btn" style="background:#ff0095;" data-color="#ff0095" title="Fuchsia Red "></button>
+
+            </div>
+        </div>
+        <div class="save-msg" id="saveMsg">Theme color saved!</div>
+    </div>
+    <script>
+        // Set and persist theme color using CSS variable and localStorage
+        const root = document.documentElement;
+        const colorBtns = document.querySelectorAll('.color-btn');
+        const saveMsg = document.getElementById('saveMsg');
+        const THEME_KEY = 'synth-theme-color';
+
+        // Apply theme color to CSS variable
+        function setThemeColor(color) {
+            root.style.setProperty('--theme-color', color);
+            // Update all elements using the theme color
+            document.querySelectorAll('.nav-logo, .card-title, .settings-title, .playlist-right h3, .playlist-item.active').forEach(el => {
+                el.style.color = color;
+            });
+        }
+
+        // Load saved color or default
+        function loadThemeColor() {
+            const saved = localStorage.getItem(THEME_KEY) || '#4ecdc4';
+            setThemeColor(saved);
+            colorBtns.forEach(btn => {
+                btn.classList.toggle('selected', btn.dataset.color === saved);
+            });
+        }
+
+        // Handle color button click
+        colorBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                colorBtns.forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                const color = btn.dataset.color;
+                setThemeColor(color);
+                localStorage.setItem(THEME_KEY, color);
+                saveMsg.style.display = 'block';
+                setTimeout(() => saveMsg.style.display = 'none', 1200);
+            });
+        });
+
+        // On page load
+        loadThemeColor();
+    </script>
+</body>
+</html>
