@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Synth</title>
+    <link rel="stylesheet" href="style.css"> <!-- External CSS file -->
+    
+
+</head>
+<body>
+
+<!-- ===================== WELCOME PAGE ===================== -->
+<div class="welcome-page-home" id="welcomePage">
+    <div class="welcome-page">
+        <div class="welcome-text">
+            <h1>Welcome to Synth</h1>
+            <p>Upload your music collection and experience studio-quality playback</p>
+        </div>
+
+        <!-- Upload section for individual files and entire folder -->
+        <div class="upload-section">
+
+            <!-- Upload individual files -->
+            <div class="upload-container">
+                <input type="file" id="fileInput" multiple accept="audio/*" hidden>
+                <label class="upload-label" for="fileInput">
+                    <div class="upload-icon">🎵</div>
+                    <div style="color: bisque;">Click to upload individual files</div>
+                </label>
+            </div>
+
+            <!-- Upload entire folder -->
+            <div class="upload-container">
+                <input type="file" id="folderInput" webkitdirectory directory multiple hidden>
+                <label class="upload-label" for="folderInput">
+                    <div class="upload-icon">📁</div>
+                    <div style="color: bisque;">Click to upload an entire folder</div>
+                </label>
+            </div>
+        </div>
+
+        <div style="color: #666; font-size: 0.9rem; margin-top: 20px;">
+            Supports MP3, WAV, FLAC, and more
+        </div>
+    </div>
+</div>
+
+<!-- ===================== PLAYER PAGE ===================== -->
+<div class="player-page" id="playerPage" style="display: none;">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-logo">Synth</div>
+        <ul class="nav-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Player Layout -->
+    <div class="player-container">
+        <!-- Left Section: Music Player -->
+        <div class="player-left">
+            <img src="icons/balthazar-disque.gif" alt="Album Art" class="album-art" id="albumArt"/>
+
+            <div class="track-info">
+                <h2 id="songTitle">Song Title</h2>
+                <p id="songArtist">Artist Name</p> 
+            </div>
+
+            <!-- Seekbar -->
+            <div class="seek-bar" id="seekBar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <!-- time-view -->
+            <div id="timeWrapper">
+              <span id="currentTime">0:00</span>
+              <span id="totalTime">0:00</span>
+            </div>
+
+            <!-- Playback Controls -->
+            <div class="controls">
+                <button id="shuffle">
+                  <img id="shuffleIcon" src="icons/shuffle.png" alt="Shuffle" title="Shuffle" width="32" height="32">
+                </button>
+                <button id="prevBtn">
+                  <img id="prevIcon" src="icons/previous.png" alt="Previous" title="Previous track" width="32" height="32">
+                </button>
+                <button id="playPauseBtn">
+                    <img id="playPauseIcon" src="icons/play.png" alt="Play" title="Play/Pause" width="32" height="32">
+                </button>
+                <button id="nextBtn">
+                    <img id="nextIcon" src="icons/next.png" alt="Next" title="Next track" width="32" height="32">
+                </button>
+                <button id="repeat">
+                    <img id="repeatIcon" src="icons/repeatoff.png" alt="Repeat" title="Loop" width="32" height="32">
+                </button>
+            </div>
+        </div>
+
+        <!-- Right Section: Playlist -->
+        <div class="playlist-right">
+            <h3>Playlist</h3>
+            <ul class="playlist" id="playlist">
+                <!-- Songs are dynamically appended here -->
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+
+
+</body>
+</html>
