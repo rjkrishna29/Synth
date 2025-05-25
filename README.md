@@ -6,7 +6,7 @@
 
 ## 🌐 Live Demo
 
-🔗 [**Try Synth Live →**]([https://your-live-site-link.com](https://rjkrishna29.github.io/Synth/))  
+🔗 [**Try Synth Live →**](https://rjkrishna29.github.io/Synth/)  
 <!-- Replace with actual deployment link -->
 
 ---
