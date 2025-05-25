@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About | Synth</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .about-container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: #181818;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+            padding: 32px 24px;
+            color: #f5f5f5;
+        }
+        .author-section {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .author-avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 16px;
+            border: 3px solid #4ecdc4;
+        }
+        .author-name {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .author-bio {
+            font-size: 1.1rem;
+            color: #bdbdbd;
+            margin-bottom: 16px;
+        }
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .card {
+            background: #232323;
+            border-radius: 12px;
+            padding: 20px 28px;
+            min-width: 180px;
+            min-height: 100px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.15s;
+        }
+        .card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 6px 18px rgba(78,205,196,0.15);
+        }
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #4ecdc4;
+        }
+        .card-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            word-break: break-all;
+        }
+        @media (max-width: 600px) {
+            .about-container {
+                padding: 16px;
+                margin: 24px 16px;
+            }
+            .cards {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .card {
+                min-width: unset;
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-logo">Synth</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+    </nav>
+    <div class="about-container">
+        <div class="author-section">
+            <!-- Optional: Add your avatar image below -->
+            <!-- <img src="avatar.jpg" alt="Ritabrato Pani" class="author-avatar"> -->
+            <div class="author-name">Ritabrato Pani</div>
+            <div class="author-bio">
+                Hi! I'm Ritabrato Pani, the creator of Synth.<br>
+                I love building web apps that make music more enjoyable and accessible.<br>
+                Thank you for using this music player!
+            </div>
+        </div>
+        <div class="cards">
+            <div class="card">
+                <div class="card-title">GitHub</div>
+                <a class="card-link" href="https://github.com/rjkrishna29" target="_blank">Click Here</a>
+            </div>
+            <div class="card">
+                <div class="card-title">LinkedIn</div>
+                <a class="card-link" href="https://www.linkedin.com/in/ritabrato-pani/" target="_blank">Click Here</a>
+            </div>
+            <div class="card">
+                <div class="card-title">Portfolio</div>
+                <a class="card-link" href="https://rjkrishna29.github.io/Portfolio/" target="_blank">Click Here</a>
+            </div>
+            <!-- Add more cards as needed -->
+        </div>
+    </div>
+</body>
+</html>
